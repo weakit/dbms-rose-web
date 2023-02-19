@@ -1,0 +1,267 @@
+
+:root {
+    --wonk: 0;
+    --soft: 100;
+    --heading-size: 64;
+    --body-size: 18;
+    --game-size: 24;
+}
+
+html {
+    background: #fffff0;
+}
+
+canvas {
+    z-index: 10;
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    bottom: 0;
+    pointer-events: none;
+    transition: opacity .3s cubic-bezier(0, 0.71, 0.2, 1.01);
+}
+
+.main-container {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    /*justify-content: center;*/
+    align-items: center;
+    user-select: none;
+    padding: 0 2em;
+}
+
+main {
+    margin: 1em;
+    max-width: 800px;
+    width: 100%;
+    font-family: 'Fraunces', serif;
+    font-size: calc(var(--body-size) * 1px);
+    font-weight: 400;
+    font-variation-settings: 'OPSZ' var(--body-size), 'WONK' var(--wonk), 'SOFT' var(--soft);
+    line-height: 1.25;
+}
+
+#controls {
+    display: inline-grid;
+    grid-template-columns: repeat(3, 1fr);
+    padding-top: .5em;
+    /*margin: 1em 1em 0;*/
+}
+
+main.message {
+    display: none;
+    opacity: 0;
+    transition: opacity .3s cubic-bezier(0, 0.71, 0.2, 1.01);
+    text-align: center;
+}
+
+main.message p {
+    font-size: 5rem;
+    margin-bottom: 0;
+}
+
+#time {
+    margin-top: 1.125rem;
+    font-size: 2rem;
+    justify-content: center;
+    transition: opacity .3s cubic-bezier(0, 0.71, 0.2, 1.01);
+}
+
+#quit {
+    justify-content: end;
+}
+
+#controls p {
+    margin-bottom: 0;
+    align-items: center;
+    display: flex;
+}
+
+#game {
+    display: none;
+}
+
+#game main {
+    font-variation-settings: 'OPSZ' var(--game-size), 'WONK' var(--wonk), 'SOFT' var(--soft);
+    font-weight: 600;
+}
+
+#text {
+    transition: opacity .3s cubic-bezier(0, 0.71, 0.2, 1.01);
+}
+
+#text span {
+    font-size: calc(var(--game-size) * 1px);
+    transition: font-weight .3s cubic-bezier(0, 0.71, 0.2, 1.01),
+    text-shadow .3s cubic-bezier(0, 0.71, 0.2, 1.01),
+    font-variation-settings .3s cubic-bezier(0, 0.71, 0.2, 1.01),
+    color .3s cubic-bezier(0, 0.71, 0.2, 1.01);
+    font-variation-settings: 'OPSZ' var(--game-size), 'WONK' var(--wonk), 'SOFT' 100;
+}
+
+#text span:hover {
+    font-weight: 800;
+    cursor: pointer;
+    font-variation-settings: 'OPSZ' var(--game-size), 'WONK' var(--wonk), 'SOFT' 0;
+}
+
+main a {
+    font-weight: 450;
+    transition: all 0.3s cubic-bezier(0, 0.71, 0.2, 1.01);
+    text-decoration: none;
+    color: black;
+    font-variation-settings: 'OPSZ' var(--body-size), 'WONK' var(--wonk), 'SOFT' var(--soft);
+    cursor: pointer;
+}
+
+main a:hover {
+    font-weight: 650;
+}
+
+main p {
+    transition: font-variation-settings 0.3s cubic-bezier(0, 0.71, 0.2, 1.01);
+}
+
+#main main p:hover {
+    font-variation-settings: 'OPSZ' var(--body-size), 'WONK' var(--wonk), 'SOFT' 0;
+}
+
+h1 {
+    font-size: calc(var(--heading-size) * 1px);
+    font-weight: 800;
+    line-height: 0.75;
+    font-variation-settings: 'OPSZ' var(--heading-size), 'WONK' var(--wonk), 'SOFT' var(--soft);
+    transition: font-variation-settings 0.6s cubic-bezier(0, 0.71, 0.2, 1.01);
+    cursor: pointer;
+}
+
+h1:hover {
+    font-variation-settings: 'OPSZ' var(--heading-size), 'WONK' var(--wonk), 'SOFT' 0;
+}
+
+.tight > p {
+    margin: 0.25em 0;
+}
+
+.drawer-container {
+    z-index: 50;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    padding: 0.5em;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.5s cubic-bezier(0, 0.71, 0.2, 1.01);
+}
+
+.drawer {
+    display: flex;
+    background: white;
+    border: solid 2px black;
+    border-radius: calc(var(--soft) / 100 * 12px);
+    padding: 0.5em;
+    column-gap: 0.25em;
+}
+
+.colour {
+    min-width: 3ch;
+    min-height: 3ch;
+    border: 2px solid black;
+    border-radius: 6ch;
+    cursor: pointer;
+}
+
+.colour.red {
+    background-color: crimson;
+}
+
+.colour.blue {
+    background-color: #0f52ba;
+}
+
+.colour.green {
+    background-color: forestgreen;
+}
+
+.colour.black {
+    background-color: black;
+}
+
+.colour.pink {
+    background-color: deeppink;
+}
+
+.colour.purple {
+    background-color: rebeccapurple;
+}
+
+.colour.orange {
+    background-color: darkorange;
+}
+
+.colour.yellow {
+    background-color: gold;
+}
+
+.red {
+    color: crimson;
+}
+
+.green {
+    color: forestgreen;
+}
+
+.orange {
+    color: darkorange;
+}
+
+.shrink {
+    display: inline-block;
+    overflow: clip;
+    max-width: 1ch;
+    transition: all 0.5s cubic-bezier(0, 0.71, 0.2, 1.01);
+}
+
+.shrunk .shrink {
+    max-width: 0;
+    font-size: 0;
+}
+
+.pink {
+    color: deeppink;
+}
+
+.purple {
+    color: rebeccapurple;
+}
+
+.tool {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    line-height: 1;
+    font-weight: bold;
+}
+
+.tool > svg {
+    max-height: 3ch;
+    max-width: 3ch;
+}
+
+
+@media only screen and (min-width: 768px) {
+    :root {
+        --body-size: 24;
+        --heading-size: 72;
+    }
+
+    .main-container {
+        padding: 0;
+    }
+}
+
