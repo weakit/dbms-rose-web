@@ -56,7 +56,7 @@ const initCanvas = () => {
     ctx.moveTo(prevX, prevY)
     ctx.lineTo(currX, currY)
     ctx.strokeStyle = colour
-    ctx.lineWidth = (colour === 'white') ? 20 : 5
+    ctx.lineWidth = (colour === '#fffff0') ? 20 : 5
     ctx.stroke()
     ctx.closePath()
   }
@@ -128,7 +128,7 @@ const initCanvas = () => {
   })
 
   $('#eraser').on('click', e => {
-    colour = 'white'
+    colour = '#fffff0'
   })
 
   $('.draw').on('click', e => {
@@ -344,10 +344,31 @@ const initGame = () => {
   $('#quit').on('click', endGame)
 }
 
+const initImages = () => {
+  const hide = $('.img-hide')
+  const image = document.getElementById('i')
+  let index = 1
+
+  setInterval(() => {
+    index += 1
+    if (index > 6) index = 1
+    image.src = `./images/${index}.jpg`
+  }, 1000)
+
+  hide.on('click', () => {
+    hide.css('display', 'none')
+  })
+
+  $('#show-image').on('click', () => {
+    hide.css('display', 'flex')
+  })
+}
+
 $(document).ready(() => {
   initCanvas()
   initAnim()
   initGame()
+  initImages()
 })
 
 
