@@ -351,7 +351,7 @@ const initImages = () => {
 
   setInterval(() => {
     index += 1
-    if (index > 6) index = 1
+    if (index > 5) index = 1
     image.src = `./images/${index}.jpg`
   }, 1000)
 
